@@ -1,0 +1,46 @@
+{
+    "name": "gusviradigital/gdp-payment-gateway",
+    "description": "Pustaka integrasi multi Payment Gateway yang fleksibel untuk PHP. Mendukung Midtrans, Xendit, Tripay, Duitku, dan PayPal. Dapat digunakan untuk berbagai jenis aplikasi.",
+    "type": "library",
+    "keywords": [
+        "payment-gateway",
+        "midtrans",
+        "xendit",
+        "tripay",
+        "duitku",
+        "paypal",
+        "php-payment",
+        "gusviradigital",
+        "transaksi",
+        "pembayaran"
+    ],
+    "homepage": "https://gusviradigital.co.id/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gusvira Digital",
+            "email": "info@gusviradigital.co.id",
+            "role": "Developer",
+            "homepage": "https://gusviradigital.co.id/"
+        }
+    ],
+    "support": {
+        "email": "support@gusviradigital.co.id",
+        "source": "https://github.com/gusviradigital/gdp-payment-gateway",
+        "docs": "https://gusviradigital.co.id/docs/gdp-payment-gateway",
+        "issues": "https://github.com/gusviradigital/gdp-payment-gateway/issues"
+    },
+    "autoload": {
+        "psr-4": {
+            "GusviraDigital\\GdpPaymentGateway\\": "src/"
+        },
+        "files": [
+            "src/Helpers/payment-helper.php"
+        ]
+    },
+    "require": {
+        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2 || ^8.3"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
