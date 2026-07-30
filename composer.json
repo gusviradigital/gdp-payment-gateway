@@ -35,12 +35,24 @@
             "GusviraDigital\\GdpPaymentGateway\\": "src/"
         },
         "files": [
-            "src/Helpers/payment-helper.php"
+            "src/Helpers/helper.php"
         ]
     },
     "require": {
-        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2 || ^8.3"
+        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2 || ^8.3",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "midtrans/midtrans-php": "^2.6",
+        "xendit/xendit-php": "^7.0",
+        "zerosdev/tripay-sdk-php": "^1.0",
+        "duitkupg/duitku-php": "dev-master",
+        "paypal/paypal-server-sdk": "^2.2"
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "duitkupg/duitku-php": true
+        }
+    }
 }

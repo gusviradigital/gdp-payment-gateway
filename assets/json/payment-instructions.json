@@ -1,0 +1,483 @@
+{
+    "bca": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Internet Banking",
+                "steps": [
+                    "Login ke KlikBCA Individual",
+                    "Pilih menu <b>Transfer Dana</b> lalu pilih <b>Transfer ke BCA Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Masukkan jumlah pembayaran",
+                    "Ikuti instruksi selanjutnya untuk menyelesaikan transaksi",
+                    "Transaksi sukses, simpan referensi pembayaran Anda"
+                ]
+            },
+            {
+                "title": "Mobile Banking (m-BCA)",
+                "steps": [
+                    "Buka aplikasi BCA mobile dan pilih <b>m-BCA</b>",
+                    "Pilih menu <b>m-Transfer</b>",
+                    "Pilih menu <b>BCA Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>) lalu klik <b>Send</b>",
+                    "Periksa detail transaksi lalu klik <b>OK</b>",
+                    "Masukkan PIN m-BCA Anda",
+                    "Transaksi sukses, simpan bukti pembayaran Anda"
+                ]
+            },
+            {
+                "title": "ATM BCA",
+                "steps": [
+                    "Masukkan Kartu ATM BCA & PIN",
+                    "Pilih menu <b>Transaksi Lainnya</b>",
+                    "Pilih menu <b>Transfer</b> lalu pilih <b>ke Rekening BCA Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>) dan tekan <b>Benar</b>",
+                    "Periksa detail transaksi dan tekan <b>Ya</b>",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "bri": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Internet Banking",
+                "steps": [
+                    "Login ke internet banking Bank BRI Anda",
+                    "Pilih menu <b>Pembayaran</b> lalu klik menu <b>BRIVA</b>",
+                    "Pilih rekening sumber dan masukkan Nomor Briva (<b>{{pay_code}}</b>) lalu klik <b>Kirim</b>",
+                    "Detail transaksi akan ditampilkan, pastikan data sudah sesuai",
+                    "Masukkan kata sandi ibanking lalu klik <b>Request</b> untuk mengirim m-PIN ke nomor HP Anda",
+                    "Periksa HP Anda dan masukkan m-PIN yang diterima lalu klik <b>Kirim</b>",
+                    "Transaksi sukses, simpan bukti transaksi Anda"
+                ]
+            },
+            {
+                "title": "Aplikasi BRImo",
+                "steps": [
+                    "Login ke aplikasi BRImo Anda",
+                    "Pilih menu <b>BRIVA</b>",
+                    "Pilih sumber dana dan masukkan Nomor Pembayaran (<b>{{pay_code}}</b>) lalu klik <b>Lanjut</b>",
+                    "Klik <b>Lanjut</b>",
+                    "Detail transaksi akan ditampilkan, pastikan data sudah sesuai",
+                    "Klik <b>Konfirmasi</b>",
+                    "Klik <b>Lanjut</b>",
+                    "Masukkan PIN BRImo Anda",
+                    "Transaksi sukses, simpan bukti transaksi Anda"
+                ]
+            },
+            {
+                "title": "ATM BRI",
+                "steps": [
+                    "Masukkan Kartu ATM BRI & PIN",
+                    "Pilih menu <b>Transaksi Lain</b> > <b>Pembayaran</b> > <b>Lainnya</b> > <b>BRIVA</b>",
+                    "Masukkan Nomor Pembayaran (<b>{{pay_code}}</b>) lalu tekan <b>Benar</b>",
+                    "Periksa detail transaksi dan tekan <b>Ya</b>",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "mandiri": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Livin' by Mandiri (Mobile)",
+                "steps": [
+                    "Login ke aplikasi Livin' by Mandiri",
+                    "Pilih menu <b>Bayar</b>",
+                    "Cari penyedia jasa atau masukkan Kode Biller",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa detail transaksi dan konfirmasi dengan MPIN Anda",
+                    "Transaksi sukses, simpan bukti pembayaran Anda"
+                ]
+            },
+            {
+                "title": "ATM Mandiri",
+                "steps": [
+                    "Masukkan Kartu ATM Mandiri & PIN",
+                    "Pilih menu <b>Bayar/Beli</b> > <b>Lainnya</b> > <b>Lainnya</b> > <b>Multipayment</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>) lalu tekan <b>Benar</b>",
+                    "Pilih tagihan Anda dengan menekan angka 1 lalu tekan <b>Ya</b>",
+                    "Konfirmasi transaksi dan tekan <b>Ya</b>",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "bni": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Mobile Banking BNI",
+                "steps": [
+                    "Login ke aplikasi BNI Mobile Banking",
+                    "Pilih menu <b>Transfer</b> > <b>Virtual Account Billing</b>",
+                    "Pilih rekening debet dan masukkan Nomor VA (<b>{{pay_code}}</b>) pada menu Input Baru",
+                    "Tagihan akan muncul, konfirmasi transaksi dengan Password Transaksi",
+                    "Transaksi sukses, simpan bukti pembayaran"
+                ]
+            },
+            {
+                "title": "ATM BNI",
+                "steps": [
+                    "Masukkan Kartu ATM BNI & PIN",
+                    "Pilih Menu <b>Lainnya</b> > <b>Transfer</b>",
+                    "Pilih jenis rekening asal dan pilih <b>Virtual Account Billing</b>",
+                    "Masukkan Nomor VA (<b>{{pay_code}}</b>) lalu tekan <b>Benar</b>",
+                    "Tagihan akan muncul, konfirmasi dan tekan <b>Ya</b>",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "qris": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Scan QRIS",
+                "steps": [
+                    "Buka aplikasi e-Wallet atau Mobile Banking Anda (GoPay, OVO, DANA, Livin', BCA Mobile, dll)",
+                    "Pilih menu <b>Scan QR</b> atau <b>Bayar</b>",
+                    "Arahkan kamera ke kode QR yang tampil di layar, atau upload dari galeri jika tersedia",
+                    "Periksa nama merchant dan nominal tagihan",
+                    "Konfirmasi pembayaran dengan PIN aplikasi Anda",
+                    "Transaksi selesai"
+                ]
+            }
+        ]
+    },
+    "manual": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Instruksi Transfer",
+                "steps": [
+                    "Buka aplikasi <b>Mobile Banking</b> atau <b>ATM</b> Anda.",
+                    "Pilih menu <b>Transfer Antar Bank / Sesama Bank</b>.",
+                    "Masukkan nomor rekening tujuan di atas.",
+                    "Masukkan nominal transfer sesuai total tagihan (<strong class=\"text-red-500\">Wajib sama persis hingga 3 digit terakhir</strong>).",
+                    "Pastikan nama penerima sesuai.",
+                    "Selesaikan transfer dan simpan Screen Capture / Struk bukti transfer sebagai referensi.",
+                    "Klik tombol <b>Konfirmasi Pembayaran</b> via WhatsApp di bawah jika Anda sudah melakukan transfer."
+                ]
+            }
+        ]
+    },
+    "retail": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Pembayaran via Kasir Minimarket",
+                "steps": [
+                    "Catat atau simpan Kode Pembayaran (<b>{{pay_code}}</b>)",
+                    "Datang ke gerai minimarket terdekat sesuai jaringan (Alfamart / Indomaret)",
+                    "Sampaikan ke kasir bahwa Anda ingin melakukan pembayaran",
+                    "Tunjukkan Kode Pembayaran ke kasir",
+                    "Lakukan pembayaran sesuai dengan nominal tagihan (ditambah biaya admin kasir jika ada)",
+                    "Terima dan simpan struk fisik pembayaran Anda dari kasir"
+                ]
+            }
+        ]
+    },
+    "shopeepay": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Pembayaran via ShopeePay",
+                "steps": [
+                    "Klik tombol Lanjutkan Pembayaran",
+                    "Anda akan dialihkan ke aplikasi Shopee",
+                    "Akan muncul detail transaksi. Pastikan data transaksi sudah sesuai",
+                    "Klik tombol <b>Bayar</b> dan masukkan <b>PIN</b>",
+                    "Transaksi selesai. Simpan bukti pembayaran Anda"
+                ]
+            }
+        ]
+    },
+    "bsi": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "BSI Mobile",
+                "steps": [
+                    "Buka aplikasi BSI Mobile",
+                    "Pilih menu <b>Bayar</b> > <b>Institusi</b>",
+                    "Masukkan nama institusi atau kode biller",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa detail transaksi dan masukkan PIN BSI Mobile Anda",
+                    "Transaksi sukses, simpan bukti pembayaran"
+                ]
+            },
+            {
+                "title": "ATM BSI",
+                "steps": [
+                    "Masukkan Kartu ATM BSI & PIN",
+                    "Pilih menu <b>Pembayaran/Pembelian</b>",
+                    "Pilih <b>Institusi</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>) dan tekan <b>Benar</b>",
+                    "Periksa detail transaksi dan konfirmasi pembayaran",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "cimb": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "OCTO Mobile",
+                "steps": [
+                    "Login ke aplikasi OCTO Mobile",
+                    "Pilih menu <b>Transfer</b> > <b>Transfer ke Rekening CIMB Niaga</b> / <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa detail transaksi dan konfirmasi dengan PIN OCTO Mobile",
+                    "Transaksi sukses, simpan bukti pembayaran"
+                ]
+            },
+            {
+                "title": "ATM CIMB Niaga",
+                "steps": [
+                    "Masukkan Kartu ATM CIMB Niaga & PIN",
+                    "Pilih menu <b>Pembayaran</b> > <b>Lanjut</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>) dan tekan <b>Benar</b>",
+                    "Periksa detail transaksi dan proses pembayaran",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "danamon": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "D-Bank PRO",
+                "steps": [
+                    "Buka aplikasi D-Bank PRO",
+                    "Pilih menu <b>Pembayaran Tagihan</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa detail transaksi dan pastikan jumlah tagihan sesuai",
+                    "Masukkan mPIN untuk otorisasi",
+                    "Transaksi sukses, simpan bukti pembayaran"
+                ]
+            },
+            {
+                "title": "ATM Danamon",
+                "steps": [
+                    "Masukkan Kartu ATM Danamon & PIN",
+                    "Pilih menu <b>Pembayaran</b> > <b>Lainnya</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>) dan tekan <b>Benar</b>",
+                    "Konfirmasi pembayaran Anda",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "muamalat": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "MDIN Bank Muamalat",
+                "steps": [
+                    "Login ke aplikasi MDIN Bank Muamalat",
+                    "Pilih menu <b>Pembayaran</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Detail tagihan akan muncul, periksa kesesuaian data",
+                    "Masukkan TIN / PIN untuk konfirmasi",
+                    "Transaksi sukses, simpan bukti pembayaran"
+                ]
+            },
+            {
+                "title": "ATM Muamalat",
+                "steps": [
+                    "Masukkan Kartu ATM Muamalat & PIN",
+                    "Pilih menu <b>Transaksi Lainnya</b> > <b>Pembayaran</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa detail transaksi dan tekan <b>Ya</b> untuk bayar",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "ocbc": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "OCBC mobile",
+                "steps": [
+                    "Login ke aplikasi OCBC mobile",
+                    "Pilih menu <b>Bayar/Beli</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa detail transaksi pada layar konfirmasi",
+                    "Masukkan PIN transaksi Anda",
+                    "Transaksi sukses, simpan bukti pembayaran"
+                ]
+            },
+            {
+                "title": "ATM OCBC",
+                "steps": [
+                    "Masukkan Kartu ATM OCBC & PIN",
+                    "Pilih menu <b>Pembayaran</b> > <b>Lainnya</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Konfirmasi pembayaran dengan menekan <b>Ya</b> / <b>Benar</b>",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "permata": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "PermataMobile X",
+                "steps": [
+                    "Buka aplikasi PermataMobile X",
+                    "Pilih menu <b>Bayar Tagihan</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa tagihan yang muncul dan konfirmasi pembayaran",
+                    "Masukkan Mobile PIN (mPIN) Anda",
+                    "Transaksi sukses, simpan bukti pembayaran Anda"
+                ]
+            },
+            {
+                "title": "ATM Permata",
+                "steps": [
+                    "Masukkan Kartu ATM Permata & PIN",
+                    "Pilih menu <b>Transaksi Lainnya</b> > <b>Pembayaran</b> > <b>Pembayaran Lainnya</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>) dan tekan <b>Benar</b>",
+                    "Pilih rekening sumber dana lalu konfirmasi pembayaran",
+                    "Transaksi sukses, simpan struk ATM Anda"
+                ]
+            }
+        ]
+    },
+    "gopay": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Aplikasi Gojek (GoPay)",
+                "steps": [
+                    "Anda akan diarahkan otomatis ke aplikasi Gojek setelah menekan Lanjut Pembayaran",
+                    "Tinjau detail pembayaran dan pastikan nominal tagihan sesuai",
+                    "Klik tombol <b>Konfirmasi & Bayar</b>",
+                    "Masukkan PIN GoPay Anda",
+                    "Transaksi selesai, Anda akan dikembalikan ke halaman sukses"
+                ]
+            }
+        ]
+    },
+    "dana": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Aplikasi DANA",
+                "steps": [
+                    "Aplikasi DANA akan terbuka otomatis melalui Notifikasi atau Deeplink",
+                    "Pastikan merchant dan total bayar tagihan sesuai",
+                    "Pilih metode (Saldo DANA / Rekening Tersimpan)",
+                    "Klik <b>Bayar</b> dan masukkan PIN DANA Anda",
+                    "Transaksi berhasil, simpan notifikasi"
+                ]
+            }
+        ]
+    },
+    "ovo": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Aplikasi OVO",
+                "steps": [
+                    "Notifikasi pembayaran OVO akan muncul di HP Anda (Pop-up/Notif)",
+                    "Klik notifikasi tersebut atau buka riwayat transaksi OVO",
+                    "Pilih sumber dana (OVO Cash / OVO Points)",
+                    "Klik <b>Bayar</b> dan konfirmasi dengan Security Code / PIN OVO",
+                    "Transaksi selesai"
+                ]
+            }
+        ]
+    },
+    "seabank": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "Aplikasi SeaBank",
+                "steps": [
+                    "Buka aplikasi SeaBank Anda",
+                    "Pilih menu <b>Bayar / Transfer</b>",
+                    "Pilih opsi <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Sistem menarik nama institusi dan tagihan. Tekan <b>Konfirmasi</b>",
+                    "Masukkan PIN SeaBank. Transaksi sukses"
+                ]
+            }
+        ]
+    },
+    "bjb": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "BJB DiGi Mobile",
+                "steps": [
+                    "Buka dan Login BJB DiGi",
+                    "Pilih menu <b>Beli/Bayar</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Tekan <b>Lanjutkan</b> dan pastikan data transaksi sesuai",
+                    "Selesaikan dengan PIN",
+                    "Transaksi selesai"
+                ]
+            }
+        ]
+    },
+    "mega": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "M-Smile (Bank Mega)",
+                "steps": [
+                    "Buka aplikasi M-Smile",
+                    "Pilih menu <b>Bayar</b> > <b>Lainnya / Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa informasi tagihan dan konfirmasi",
+                    "Masukkan PIN M-Smile Anda. Transaksi sukses"
+                ]
+            }
+        ]
+    },
+    "dki": {
+        "success": true,
+        "message": "",
+        "data": [
+            {
+                "title": "JakOne Mobile (Bank DKI)",
+                "steps": [
+                    "Buka aplikasi JakOne Mobile",
+                    "Pilih menu <b>Pembayaran</b> > <b>Virtual Account</b>",
+                    "Masukkan Nomor Virtual Account (<b>{{pay_code}}</b>)",
+                    "Periksa nominal donasi dan nama instansi",
+                    "Masukkan PIN untuk menyelesaikan transaksi"
+                ]
+            }
+        ]
+    }
+}

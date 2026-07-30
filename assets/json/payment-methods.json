@@ -1,0 +1,202 @@
+{
+    "manual": {
+        "name": "Transfer Manual",
+        "logo": "",
+        "color": "text-gray-600"
+    },
+    "bca": {
+        "name": "BCA Virtual Account",
+        "logo": "bca.png",
+        "color": "text-blue-600"
+    },
+    "bni": {
+        "name": "BNI Virtual Account",
+        "logo": "bni.png",
+        "color": "text-orange-600"
+    },
+    "bri": {
+        "name": "BRI Virtual Account",
+        "logo": "bri.png",
+        "color": "text-blue-700"
+    },
+    "mandiri": {
+        "name": "Mandiri Bill Payment",
+        "logo": "mandiri.png",
+        "color": "text-yellow-600"
+    },
+    "permata": {
+        "name": "Permata Virtual Account",
+        "logo": "permata.png",
+        "color": "text-green-600"
+    },
+    "cimb": {
+        "name": "CIMB Niaga Virtual Account",
+        "logo": "cimb.png",
+        "color": "text-red-600"
+    },
+    "danamon": {
+        "name": "Danamon Virtual Account",
+        "logo": "danamon.png",
+        "color": "text-orange-500"
+    },
+    "bsi": {
+        "name": "BSI Virtual Account",
+        "logo": "bsi.png",
+        "color": "text-teal-600"
+    },
+    "seabank": {
+        "name": "SeaBank Virtual Account",
+        "logo": "seabank.png",
+        "color": "text-orange-500"
+    },
+    "bss": {
+        "name": "Bank Sahabat Sampoerna",
+        "logo": "bss.png",
+        "color": "text-red-600"
+    },
+    "nexcash": {
+        "name": "Nexcash",
+        "logo": "nexcash.png",
+        "color": "text-green-600"
+    },
+    "hana": {
+        "name": "Bank KEB Hana",
+        "logo": "hana.png",
+        "color": "text-purple-600"
+    },
+    "nobu": {
+        "name": "Bank Nobu",
+        "logo": "nobu.png",
+        "color": "text-yellow-600"
+    },
+    "maybank": {
+        "name": "Bank Maybank",
+        "logo": "maybank.png",
+        "color": "text-red-600"
+    },
+    "ocbc": {
+        "name": "Bank OCBC",
+        "logo": "ocbc.png",
+        "color": "text-yellow-600"
+    },
+    "mega": {
+        "name": "Bank Mega",
+        "logo": "bank-mega.png",
+        "color": "text-red-600"
+    },
+    "muamalat": {
+        "name": "Bank Muamalat",
+        "logo": "muamalat.png",
+        "color": "text-red-600"
+    },
+    "dki": {
+        "name": "Bank DKI",
+        "logo": "dki.png",
+        "color": "text-red-600"
+    },
+    "bjb": {
+        "name": "BJB Virtual Account",
+        "logo": "bjb.png",
+        "color": "text-blue-600"
+    },
+    "gopay": {
+        "name": "GoPay",
+        "logo": "gopay.png",
+        "color": "text-green-500"
+    },
+    "shopeepay": {
+        "name": "ShopeePay",
+        "logo": "shopeePay.png",
+        "color": "text-orange-500"
+    },
+    "dana": {
+        "name": "DANA",
+        "logo": "dana.png",
+        "color": "text-blue-500"
+    },
+    "ovo": {
+        "name": "OVO",
+        "logo": "ovo.png",
+        "color": "text-purple-500"
+    },
+    "qris": {
+        "name": "QRIS",
+        "logo": "qris.png",
+        "color": "text-gray-800"
+    },
+    "astrapay": {
+        "name": "AstraPay",
+        "logo": "astrapay.png",
+        "color": "text-green-600"
+    },
+    "jenius": {
+        "name": "JeniusPay",
+        "logo": "jenius.png",
+        "color": "text-green-600"
+    },
+    "nusapay": {
+        "name": "Nusapay",
+        "logo": "nusapay.png",
+        "color": "text-blue-600"
+    },
+    "indodana": {
+        "name": "Indodana",
+        "logo": "indodana.png",
+        "color": "text-green-600"
+    },
+    "linkaja": {
+        "name": "LinkAja",
+        "logo": "linkaja.png",
+        "color": "text-yellow-600"
+    },
+    "uangme": {
+        "name": "UangMe",
+        "logo": "uangme.png",
+        "color": "text-yellow-600"
+    },
+    "gopay_dynamic_qris": {
+        "name": "QRIS (Dynamic)",
+        "logo": "qris.png",
+        "color": "text-gray-800"
+    },
+    "gopay_static_qris": {
+        "name": "QRIS (Static)",
+        "logo": "qris.png",
+        "color": "text-gray-800"
+    },
+    "credit_card": {
+        "name": "Kartu Kredit (Visa/Mastercard)",
+        "logo": "visa.png",
+        "color": "text-blue-800"
+    },
+    "google_play": {
+        "name": "Google Play",
+        "logo": "google-play.webp",
+        "color": "text-gray-600"
+    },
+    "kredivo": {
+        "name": "Kredivo",
+        "logo": "kredivo.png",
+        "color": "text-orange-500"
+    },
+    "amex": {
+        "name": "American Express",
+        "logo": "amex.png",
+        "color": "text-blue-500"
+    },
+    "alfamart": {
+        "name": "Alfamart",
+        "logo": "alfamart.svg",
+        "color": "text-red-600"
+    },
+    "alfamidi": {
+        "name": "Alfamidi",
+        "logo": "alfamidi.svg",
+        "color": "text-red-600"
+    },
+    "indomaret": {
+        "name": "Indomaret",
+        "logo": "indomaret.png",
+        "color": "text-blue-600"
+    }
+}
