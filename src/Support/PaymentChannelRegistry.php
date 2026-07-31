@@ -49,6 +49,57 @@ class PaymentChannelRegistry
         'INDODANA' => 'indodana',
     ];
 
+    private array $duitkuAliases = [ 
+        // Credit Card
+        'VC' => 'credit_card',
+        
+        // Virtual Account
+        'BC' => 'bca',
+        'M2' => 'mandiri',
+        'VA' => 'maybank',
+        'I1' => 'bni',
+        'B1' => 'cimb',
+        'BT' => 'permata',
+        'A1' => 'atm_bersama',
+        'AG' => 'artha_graha',
+        'NC' => 'bnc',
+        'BR' => 'briva',
+        'S1' => 'bss', // Bank Sahabat Sampoerna
+        'DM' => 'danamon',
+        'BV' => 'bsi',
+        
+        // Retail
+        'FT' => 'alfamart', // Pegadaian/ALFA/Pos
+        'IR' => 'indomaret',
+        
+        // E-Wallet
+        'OV' => 'ovo',
+        'SA' => 'shopeepay',
+        'LF' => 'linkaja',
+        'LA' => 'linkaja',
+        'DA' => 'dana',
+        'SL' => 'shopeepay', // Shopee Pay Account Link
+        'OL' => 'ovo', // OVO Account Link
+        
+        // QRIS
+        'SP' => 'qris', // Shopee Pay QRIS
+        'NQ' => 'qris', // Nobu QRIS
+        'GQ' => 'gudang_voucher', // Gudang Voucher
+        'SQ' => 'nusapay',
+        
+        // Kredit / Paylater
+        'DN' => 'indodana',
+        'AT' => 'atome',
+        
+        // E-Banking
+        'JP' => 'jeniuspay',
+        
+        // E-Commerce
+        'T1' => 'tokopedia',
+        'T2' => 'tokopedia',
+        'T3' => 'tokopedia',
+    ];
+
     public function __construct(array $config, string $baseImgUrl = '/assets/images/payment/')
     {
         $this->config = $config;
@@ -61,9 +112,12 @@ class PaymentChannelRegistry
     {
         $this->masterChannels = [
             // Virtual Account
+            'artha_graha' => ['name' => 'Arta Graha Virtual Account', 'icon' => $this->baseImgUrl . 'ag.png', 'category' => 'virtual_account'],
+            'atm_bersama' => ['name' => 'ATM Bersama Virtual Account', 'icon' => $this->baseImgUrl . 'a1.png', 'category' => 'virtual_account'],
             'bca' => ['name' => 'BCA Virtual Account', 'icon' => $this->baseImgUrl . 'bca.png', 'category' => 'virtual_account'],
             'bni' => ['name' => 'BNI Virtual Account', 'icon' => $this->baseImgUrl . 'bni.png', 'category' => 'virtual_account'],
             'bri' => ['name' => 'BRI Virtual Account', 'icon' => $this->baseImgUrl . 'bri.png', 'category' => 'virtual_account'],
+            'briva' => ['name' => 'BRI Virtual Account', 'icon' => $this->baseImgUrl . 'br.png', 'category' => 'virtual_account'],
             'bsi' => ['name' => 'BSI Virtual Account', 'icon' => $this->baseImgUrl . 'bsi.png', 'category' => 'virtual_account'],
             'echannel' => ['name' => 'Mandiri Virtual Account', 'icon' => $this->baseImgUrl . 'mandiri.png', 'category' => 'virtual_account'],
             'mandiri' => ['name' => 'Mandiri Virtual Account', 'icon' => $this->baseImgUrl . 'mandiri.png', 'category' => 'virtual_account'],
@@ -85,6 +139,7 @@ class PaymentChannelRegistry
             
             // E-Wallet
             'gopay' => ['name' => 'GoPay', 'icon' => $this->baseImgUrl . 'gopay.png', 'category' => 'ewallet'],
+            'gopay_recurring' => ['name' => 'GoPay Recurring', 'icon' => $this->baseImgUrl . 'gopay.png', 'category' => 'ewallet'],
             'gopay_dynamic_qris' => ['name' => 'GoPay', 'icon' => $this->baseImgUrl . 'gopay.png', 'category' => 'ewallet'],
             'gopay_static_qris' => ['name' => 'GoPay', 'icon' => $this->baseImgUrl . 'gopay.png', 'category' => 'ewallet'],
             'shopeepay' => ['name' => 'ShopeePay', 'icon' => $this->baseImgUrl . 'shopeePay.png', 'category' => 'ewallet'],
@@ -93,6 +148,9 @@ class PaymentChannelRegistry
             'linkaja' => ['name' => 'LinkAja', 'icon' => $this->baseImgUrl . 'linkaja.png', 'category' => 'ewallet'],
             'astrapay' => ['name' => 'AstraPay', 'icon' => $this->baseImgUrl . 'astrapay.png', 'category' => 'ewallet'],
             'nusapay' => ['name' => 'NusaPay', 'icon' => $this->baseImgUrl . 'nusapay.png', 'category' => 'ewallet'],
+            'jeniuspay' => ['name' => 'Jenius Pay', 'icon' => $this->baseImgUrl . 'jenius.png', 'category' => 'ewallet'],
+            'gudang_voucher' => ['name' => 'Gudang Voucher', 'icon' => $this->baseImgUrl . 'gv.png', 'category' => 'ewallet'],
+            'tokopedia' => ['name' => 'Tokopedia', 'icon' => $this->baseImgUrl . 'tokopedia.webp', 'category' => 'ewallet'],
             
             // QRIS
             'qris' => ['name' => 'QRIS', 'icon' => $this->baseImgUrl . 'qris.png', 'category' => 'qris'],
@@ -113,6 +171,13 @@ class PaymentChannelRegistry
             'akulaku' => ['name' => 'Akulaku', 'icon' => $this->baseImgUrl . 'akulaku.svg', 'category' => 'paylater'],
             'indodana' => ['name' => 'Indodana', 'icon' => $this->baseImgUrl . 'indodana.png', 'category' => 'paylater'],
             'uangme' => ['name' => 'UangMe', 'icon' => $this->baseImgUrl . 'uangme.png', 'category' => 'paylater'],
+            'atome' => ['name' => 'Atome', 'icon' => $this->baseImgUrl . 'atom.webp', 'category' => 'paylater'],
+            
+            // Direct Debit
+            'bri_direct_debit' => ['name' => 'BRI Direct Debit', 'icon' => $this->baseImgUrl . 'bri.png', 'category' => 'direct_debit'],
+            'dd_bri' => ['name' => 'BRI Direct Debit', 'icon' => $this->baseImgUrl . 'bri.png', 'category' => 'direct_debit'],
+            'dd_mandiri' => ['name' => 'Mandiri Direct Debit', 'icon' => $this->baseImgUrl . 'mandiri.png', 'category' => 'direct_debit'],
+            'bri_epay' => ['name' => 'BRI e-Pay', 'icon' => $this->baseImgUrl . 'bri.png', 'category' => 'direct_debit'],
         ];
     }
 
@@ -125,6 +190,7 @@ class PaymentChannelRegistry
             'retail' => 'Minimarket / Retail',
             'credit_card' => 'Kartu Kredit / Debit',
             'paylater' => 'PayLater',
+            'direct_debit' => 'Direct Debit',
             'manual_transfer' => 'Transfer Manual',
         ];
     }
