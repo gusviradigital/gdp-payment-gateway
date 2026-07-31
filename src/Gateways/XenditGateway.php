@@ -37,12 +37,12 @@ class XenditGateway implements PaymentGatewayInterface
             $type = 'VIRTUAL_ACCOUNT'; // Default
             
             // Tentukan tipe payment method Xendit
-            $ewallets = ['GOPAY', 'OVO', 'DANA', 'LINKAJA', 'SHOPEEPAY', 'ASTRAPAY'];
+            $ewallets = ['GOPAY', 'GOPAY_RECURRING', 'OVO', 'DANA', 'LINKAJA', 'SHOPEEPAY', 'ASTRAPAY', 'JENIUSPAY'];
             $qris = ['QRIS'];
             $retail = ['ALFAMART', 'INDOMARET'];
             $cards = ['CREDIT_CARD'];
             $paylaters = ['KREDIVO', 'AKULAKU', 'UANGME', 'INDODANA'];
-            $directDebits = ['BRI_DIRECT_DEBIT', 'DD_BRI', 'DD_MANDIRI', 'BCA_KLIKPAY', 'BRI_EPAY', 'JENIUSPAY'];
+            $directDebits = ['BRI_DIRECT_DEBIT', 'DD_BRI', 'DD_MANDIRI', 'BRI_EPAY'];
             
             if (in_array($methodCode, $ewallets)) $type = 'EWALLET';
             elseif (in_array($methodCode, $qris)) $type = 'QR_CODE';
@@ -65,12 +65,26 @@ class XenditGateway implements PaymentGatewayInterface
                     ]
                 ];
             } elseif ($type === 'EWALLET') {
+                $ewalletProps = [
+                    'success_return_url' => $params['return_url'] ?? $this->returnUrl,
+                    'failure_return_url' => $params['return_url'] ?? $this->returnUrl,
+                    'cancel_return_url' => $params['return_url'] ?? $this->returnUrl
+                ];
+                
+                if (!empty($params['customer_details']['phone'])) {
+                    $ewalletProps['mobile_number'] = $params['customer_details']['phone'];
+                }
+                
+                if ($methodCode === 'JENIUSPAY') {
+                    if (empty($params['cashtag'])) {
+                        throw new Exception("Transaksi Jenius Pay membutuhkan cashtag.");
+                    }
+                    $ewalletProps['cashtag'] = $params['cashtag'];
+                }
+
                 $paymentMethod['ewallet'] = [
                     'channel_code' => $methodCode,
-                    'channel_properties' => [
-                        'success_return_url' => $params['return_url'] ?? $this->returnUrl,
-                        'failure_return_url' => $params['return_url'] ?? $this->returnUrl
-                    ]
+                    'channel_properties' => $ewalletProps
                 ];
             } elseif ($type === 'QR_CODE') {
                 $paymentMethod['qr_code'] = [
@@ -151,11 +165,55 @@ class XenditGateway implements PaymentGatewayInterface
                 $requestParamsArray['customer']['mobile_number'] = $params['customer_details']['phone'];
             }
 
-            $requestParams = new \Xendit\PaymentRequest\PaymentRequestParameters($requestParamsArray);
+            // Tambahkan items jika ada (Sangat diperlukan untuk validasi Kredivo UAT)
+            if (!empty($params['item_details'])) {
+                $items = [];
+                foreach ($params['item_details'] as $item) {
+                    $items[] = [
+                        'reference_id' => (string) ($item['id'] ?? 'item-1'),
+                        'name' => $item['name'] ?? 'Donasi',
+                        'category' => 'Donation',
+                        'price' => (float) $item['price'],
+                        'quantity' => (float) $item['quantity'],
+                        'type' => 'DIGITAL',
+                        'url' => home_url()
+                    ];
+                }
+                $requestParamsArray['items'] = $items;
+            }
 
-            // Call SDK: $idempotency_key, $for_user_id, $with_split_rule, $payment_request_parameters
-            $result = $apiInstance->createPaymentRequest(null, null, null, $requestParams);
-            $resultArr = json_decode(json_encode($result), true);
+            // Xendit SDK v1.70.0 tidak mensupport enum 'PAYLATER' di PaymentMethodType, 
+            // Sehingga response deserialization akan crash. Kita gunakan raw curl (wp_remote_post).
+            if ($type === 'PAYLATER') {
+                $response = wp_remote_post('https://api.xendit.co/payment_requests', [
+                    'headers' => [
+                        'Authorization' => 'Basic ' . base64_encode($this->apiKey . ':'),
+                        'Content-Type'  => 'application/json'
+                    ],
+                    'body' => json_encode($requestParamsArray),
+                    'timeout' => 30
+                ]);
+
+                if (is_wp_error($response)) {
+                    throw new Exception("Koneksi ke Xendit gagal: " . $response->get_error_message());
+                }
+
+                $body = json_decode(wp_remote_retrieve_body($response), true);
+                if (wp_remote_retrieve_response_code($response) >= 400) {
+                    throw new Exception("Gagal membuat transaksi Paylater: " . ($body['message'] ?? json_encode($body)));
+                }
+                
+                $responseId = $body['id'] ?? '';
+                $responseStatus = $body['status'] ?? '';
+                $resultArr = $body;
+            } else {
+                $requestParams = new \Xendit\PaymentRequest\PaymentRequestParameters($requestParamsArray);
+                $result = $apiInstance->createPaymentRequest(null, null, null, $requestParams);
+                
+                $responseId = $result->getId();
+                $responseStatus = $result->getStatus();
+                $resultArr = json_decode(json_encode($result), true);
+            }
 
             // Normalize for frontend (mock Midtrans format)
             if (isset($resultArr['payment_method']['virtual_account']['channel_properties']['virtual_account_number'])) {
@@ -176,20 +234,20 @@ class XenditGateway implements PaymentGatewayInterface
                             'url' => $action['url'] ?? ''
                         ];
                         if (!$paymentUrl) $paymentUrl = $action['url'] ?? '';
-                    } elseif (isset($action['action']) && in_array($action['action'], ['MOBILE_WEB_CHECKOUT', 'MOBILE_DEEPLINK', 'DESKTOP_WEB_CHECKOUT', 'WEB_CHECKOUT'])) {
+                    } elseif (isset($action['action']) && in_array($action['action'], ['AUTH', 'PRESENT', 'REDIRECT', 'MOBILE_WEB_CHECKOUT', 'MOBILE_DEEPLINK', 'DESKTOP_WEB_CHECKOUT', 'WEB_CHECKOUT'])) {
                         $resultArr['actions'][] = [
                             'name' => 'deeplink-redirect',
                             'url' => $action['url'] ?? ''
                         ];
-                        $paymentUrl = $action['url'] ?? '';
+                        if (!$paymentUrl) $paymentUrl = $action['url'] ?? '';
                     }
                 }
             }
 
             return new PaymentResponse(
-                $paymentUrl ?? '', // Akan ada URL untuk QRIS/E-Wallet atau string kosong untuk VA
-                $result->getId(),
-                $result->getStatus(),
+                $paymentUrl ?? '', // Akan ada URL untuk QRIS/E-Wallet/Paylater atau string kosong untuk VA
+                $responseId,
+                $responseStatus,
                 $resultArr
             );
 

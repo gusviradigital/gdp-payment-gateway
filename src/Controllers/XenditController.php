@@ -63,6 +63,8 @@ class XenditController extends PaymentController
         if (isset($params['authentication_id'])) $xenditParams['authentication_id'] = $params['authentication_id'];
         if (isset($params['card_last_four'])) $xenditParams['card_last_four'] = $params['card_last_four'];
         if (isset($params['card_expiry'])) $xenditParams['card_expiry'] = $params['card_expiry'];
+        if (isset($params['cashtag'])) $xenditParams['cashtag'] = $params['cashtag'];
+
 
         try {
             return parent::createTransaction($xenditParams);
