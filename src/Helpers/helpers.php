@@ -22,6 +22,8 @@ if (!function_exists('gdp_payment_get_active_channels')) {
             'seabank' => ['name' => 'SeaBank Virtual Account', 'icon' => $baseImgUrl . 'seabank.png', 'category' => 'virtual_account'],
             
             'gopay' => ['name' => 'GoPay', 'icon' => $baseImgUrl . 'gopay.png', 'category' => 'ewallet'],
+            'gopay_dynamic_qris' => ['name' => 'GoPay', 'icon' => $baseImgUrl . 'gopay.png', 'category' => 'ewallet'],
+            'gopay_static_qris' => ['name' => 'GoPay', 'icon' => $baseImgUrl . 'gopay.png', 'category' => 'ewallet'],
             'shopeepay' => ['name' => 'ShopeePay', 'icon' => $baseImgUrl . 'shopeePay.png', 'category' => 'ewallet'],
             'dana' => ['name' => 'DANA', 'icon' => $baseImgUrl . 'dana.png', 'category' => 'ewallet'],
             'ovo' => ['name' => 'OVO', 'icon' => $baseImgUrl . 'ovo.png', 'category' => 'ewallet'],
