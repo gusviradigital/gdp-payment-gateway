@@ -20,6 +20,7 @@ if (!function_exists('gdp_payment_get_active_channels')) {
             'echannel' => ['name' => 'Mandiri Virtual Account', 'icon' => $baseImgUrl . 'mandiri.png', 'category' => 'virtual_account'],
             'mandiri' => ['name' => 'Mandiri Virtual Account', 'icon' => $baseImgUrl . 'mandiri.png', 'category' => 'virtual_account'],
             'permata' => ['name' => 'Permata Virtual Account', 'icon' => $baseImgUrl . 'permata.png', 'category' => 'virtual_account'],
+            'cimb' => ['name' => 'CIMB Niaga Virtual Account', 'icon' => $baseImgUrl . 'cimb.png', 'category' => 'virtual_account'],
             'cimb_niaga' => ['name' => 'CIMB Niaga Virtual Account', 'icon' => $baseImgUrl . 'cimb.png', 'category' => 'virtual_account'],
             'danamon' => ['name' => 'Danamon Virtual Account', 'icon' => $baseImgUrl . 'danamon.png', 'category' => 'virtual_account'],
             'seabank' => ['name' => 'SeaBank Virtual Account', 'icon' => $baseImgUrl . 'seabank.png', 'category' => 'virtual_account'],
