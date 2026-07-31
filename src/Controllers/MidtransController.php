@@ -46,10 +46,17 @@ class MidtransController extends PaymentController
             case 'bri':
             case 'permata':
             case 'cimb':
+            case 'cimb_niaga':
             case 'danamon':
             case 'seabank':
+            case 'bsi': // BSI Virtual Account
+            case 'other_va': // Other Banks
                 $bank_code = $method;
+                
+                // Normalisasi kode bank Midtrans
                 if ($method === 'cimb_niaga') $bank_code = 'cimb';
+                // Midtrans menggunakan BNI (atau Permata/Mandiri) untuk menerima jaringan bank lain (ALTO/Prima/ATM Bersama)
+                if ($method === 'other_va') $bank_code = 'bni'; 
                 
                 $chargeParams['payment_type'] = ($method === 'permata') ? 'permata' : 'bank_transfer';
                 if ($method !== 'permata') {
@@ -80,15 +87,51 @@ class MidtransController extends PaymentController
                 ];
                 break;
 
+            case 'ovo':
+                $chargeParams['payment_type'] = 'ovo';
+                // OVO pada Core API umumnya membutuhkan nomor HP dari objek OVO
+                $phone = $params['phone'] ?? ($params['customer_details']['phone'] ?? '');
+                if (!empty($phone)) {
+                    $chargeParams['ovo'] = ['phone_number' => $phone];
+                }
+                break;
+
+            case 'credit_card':
+            case 'amex':
+                $chargeParams['payment_type'] = 'credit_card';
+                // Credit Card via Core API WAJIB membutuhkan token_id yang dikirim dari frontend (Midtrans.js)
+                if (!empty($params['token_id'])) {
+                    $chargeParams['credit_card'] = [
+                        'token_id' => $params['token_id'],
+                        'authentication' => true, // Mengaktifkan 3D Secure
+                    ];
+                }
+                break;
+
+            case 'dana':
+                $chargeParams['payment_type'] = 'dana';
+                break;
+
             case 'qris':
             case 'gopay_dynamic_qris':
             case 'gopay_static_qris':
                 $chargeParams['payment_type'] = 'qris';
-                $chargeParams['qris'] = ['acquirer' => 'gopay'];
+                
+                // Mengambil acquirer secara dinamis dari $params atau $config
+                $acquirer = $params['qris_acquirer'] ?? ($this->config['qris_acquirer'] ?? null);
+                
+                // Jika acquirer di-set, tambahkan ke payload
+                if (!empty($acquirer)) {
+                    $chargeParams['qris'] = ['acquirer' => $acquirer];
+                }
                 break;
             
             case 'akulaku':
                 $chargeParams['payment_type'] = 'akulaku';
+                break;
+                
+            case 'kredivo':
+                $chargeParams['payment_type'] = 'kredivo';
                 break;
 
             case 'indomaret':
