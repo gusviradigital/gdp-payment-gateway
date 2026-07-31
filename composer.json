@@ -35,7 +35,7 @@
             "GusviraDigital\\GdpPaymentGateway\\": "src/"
         },
         "files": [
-            "src/Helpers/helper.php"
+            "src/Helpers/helpers.php"
         ]
     },
     "require": {
