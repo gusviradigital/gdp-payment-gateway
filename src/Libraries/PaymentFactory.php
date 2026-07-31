@@ -29,7 +29,8 @@ class PaymentFactory
             case 'xendit':
                 return new XenditGateway(
                     $config['api_key'] ?? null,
-                    $config['return_url'] ?? null
+                    $config['return_url'] ?? null,
+                    $config['mode'] ?? 'invoice'
                 );
 
             case 'tripay':

@@ -38,7 +38,6 @@ class XenditController extends PaymentController
                   'MUAMALAT_VIRTUAL_ACCOUNT' => 'MUAMALAT',
                   'BSS_VIRTUAL_ACCOUNT' => 'SAHABAT_SAMPOERNA',
                   'CARDS' => 'CREDIT_CARD',
-                  'BRI_DIRECT_DEBIT' => 'DD_BRI',
                   'MANDIRIVA' => 'MANDIRI',
                   'BNIVA' => 'BNI',
                   'BRIVA' => 'BRI',
@@ -58,6 +57,12 @@ class XenditController extends PaymentController
         if (isset($params['return_url'])) {
             $xenditParams['return_url'] = $params['return_url'];
         }
+        
+        // Forward extra fields
+        if (isset($params['token_id'])) $xenditParams['token_id'] = $params['token_id'];
+        if (isset($params['authentication_id'])) $xenditParams['authentication_id'] = $params['authentication_id'];
+        if (isset($params['card_last_four'])) $xenditParams['card_last_four'] = $params['card_last_four'];
+        if (isset($params['card_expiry'])) $xenditParams['card_expiry'] = $params['card_expiry'];
 
         try {
             return parent::createTransaction($xenditParams);
