@@ -49,6 +49,29 @@ class PaymentChannelRegistry
         'INDODANA' => 'indodana',
     ];
 
+    private array $tripayAliases = [
+        'PERMATAAVA' => 'permata',
+        'BNIVA' => 'bni',
+        'BRIVA' => 'briva',
+        'MANDIRIVA' => 'mandiri',
+        'BCAVA' => 'bca',
+        'MUAMALATVA' => 'muamalat',
+        'CIMBVA' => 'cimb',
+        'BSIVA' => 'bsi',
+        'OCBCVA' => 'ocbc',
+        'DANAMONVA' => 'danamon',
+        'ALFAMART' => 'alfamart',
+        'INDOMARET' => 'indomaret',
+        'ALFAMIDI' => 'alfamidi',
+        'OVO' => 'ovo',
+        'QRIS' => 'qris',
+        'QRISC' => 'qris',
+        'QRIS2' => 'qris',
+        'DANA' => 'dana',
+        'SHOPEEPAY' => 'shopeepay',
+        'QRIS_SHOPEEPAY' => 'qris',
+    ];
+
     private array $duitkuAliases = [ 
         // Credit Card
         'VC' => 'credit_card',
@@ -236,10 +259,12 @@ class PaymentChannelRegistry
             $tripayChannels = $this->config['tripay_enabled_channels'] ?? [];
             if (is_array($tripayChannels)) {
                 foreach ($tripayChannels as $code => $isEnabled) {
-                    $cleanCode = strtolower($code);
-                    if ($isEnabled && isset($this->masterChannels[$cleanCode])) {
-                        $key = 'tripay-' . $cleanCode;
-                        $activeChannelsRaw[$key] = $this->masterChannels[$cleanCode];
+                    if ($isEnabled) {
+                        $mappedCode = $this->tripayAliases[strtoupper($code)] ?? strtolower($code);
+                        if (isset($this->masterChannels[$mappedCode])) {
+                            $key = 'tripay-' . $code;
+                            $activeChannelsRaw[$key] = $this->masterChannels[$mappedCode];
+                        }
                     }
                 }
             }
