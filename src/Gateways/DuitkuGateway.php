@@ -5,6 +5,7 @@ namespace GusviraDigital\GdpPaymentGateway\Gateways;
 use GusviraDigital\GdpPaymentGateway\Contracts\PaymentGatewayInterface;
 use GusviraDigital\GdpPaymentGateway\Libraries\PaymentResponse;
 use Duitku\Api;
+use Duitku\Pop;
 use Duitku\Config;
 use Exception;
 
@@ -16,14 +17,22 @@ class DuitkuGateway implements PaymentGatewayInterface
     private Config $duitkuConfig;
     private string $returnUrl;
     private string $callbackUrl;
+    private string $mode;
 
-    public function __construct(?string $merchantCode = null, ?string $apiKey = null, ?bool $sandboxMode = null, ?string $returnUrl = null, ?string $callbackUrl = null)
-    {
+    public function __construct(
+        ?string $merchantCode = null, 
+        ?string $apiKey = null, 
+        ?bool $sandboxMode = null, 
+        ?string $returnUrl = null, 
+        ?string $callbackUrl = null,
+        ?string $mode = 'v2'
+    ) {
         $this->merchantCode = $merchantCode ?? '';
         $this->apiKey = $apiKey ?? '';
         $this->sandboxMode = $sandboxMode ?? false;
         $this->returnUrl = $returnUrl ?? '';
         $this->callbackUrl = $callbackUrl ?? '';
+        $this->mode = strtolower($mode ?? 'v2');
 
         $this->duitkuConfig = new Config(
             $this->apiKey,
@@ -33,7 +42,7 @@ class DuitkuGateway implements PaymentGatewayInterface
             false  
         );
     }
-
+ 
     public function createTransaction(array $params): PaymentResponse
     {
         $duitkuParams = [
@@ -80,7 +89,21 @@ class DuitkuGateway implements PaymentGatewayInterface
             ];
 
             $finalParams = array_merge($defaultParams, $params);
-            $response = Api::createInvoice($finalParams, $this->duitkuConfig);
+            
+            if ($this->mode === 'pop') {
+                if (!isset($finalParams['itemDetails'])) {
+                    $finalParams['itemDetails'] = [[
+                        'name' => $finalParams['productDetails'],
+                        'price' => $finalParams['paymentAmount'],
+                        'quantity' => 1
+                    ]];
+                }
+                $response = Pop::createInvoice($finalParams, $this->duitkuConfig);
+            } else {
+                $finalParams['paymentMethod'] = $finalParams['paymentMethod'] ?? '';
+                $response = Api::createInvoice($finalParams, $this->duitkuConfig);
+            }
+
             $result = json_decode($response, true);
 
             if (json_last_error() !== JSON_ERROR_NONE) {

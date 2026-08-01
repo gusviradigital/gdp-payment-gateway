@@ -49,7 +49,8 @@ class PaymentFactory
                     $config['api_key'] ?? null,
                     $config['sandbox_mode'] ?? null,
                     $config['return_url'] ?? null,
-                    $config['callback_url'] ?? null
+                    $config['callback_url'] ?? null,
+                    $config['mode'] ?? 'v2'
                 );
 
             case 'paypal':

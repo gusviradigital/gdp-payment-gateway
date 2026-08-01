@@ -250,10 +250,12 @@ class PaymentChannelRegistry
             $duitkuChannels = $this->config['duitku_enabled_channels'] ?? [];
             if (is_array($duitkuChannels)) {
                 foreach ($duitkuChannels as $code => $isEnabled) {
-                    $cleanCode = strtolower($code);
-                    if ($isEnabled && isset($this->masterChannels[$cleanCode])) {
-                        $key = 'duitku-' . $cleanCode;
-                        $activeChannelsRaw[$key] = $this->masterChannels[$cleanCode];
+                    if ($isEnabled) {
+                        $mappedCode = $this->duitkuAliases[strtoupper($code)] ?? strtolower($code);
+                        if (isset($this->masterChannels[$mappedCode])) {
+                            $key = 'duitku-' . $code;
+                            $activeChannelsRaw[$key] = $this->masterChannels[$mappedCode];
+                        }
                     }
                 }
             }
@@ -263,7 +265,7 @@ class PaymentChannelRegistry
         if (!empty($this->config['paypal_enabled'])) {
             $activeChannelsRaw['paypal-paypal'] = [
                 'name' => 'PayPal',
-                'icon' => $this->baseImgUrl . 'paypal.png', 
+                'icon' => $this->baseImgUrl . 'paypal.webp', 
                 'category' => 'ewallet'
             ];
         }

@@ -11,13 +11,13 @@ class DuitkuController extends PaymentController
     {
         parent::__construct('duitku', $config);
     }
-
+ 
     public function createTransaction(array $params): PaymentResponse
     {
         $duitkuParams = [
             'order_id' => $params['order_id'],
             'amount' => $params['amount'],
-            'method' => $params['method'] ?? '',
+            'method' => strtoupper($params['method'] ?? ''),
             'customer_details' => $params['customer_details'] ?? [],
             'description' => 'Payment ' . ($params['description'] ?? ''),
         ];
